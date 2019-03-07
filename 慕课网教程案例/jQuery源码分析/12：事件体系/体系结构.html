@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js" type="text/javascript"></script>
-	<title>Ä£ÄâjQuery</title>
+	<title>æ¨¡æ‹ŸjQuery</title>
 </head>
 <body>
 
@@ -11,8 +11,8 @@
 
 <script type="text/javascript">
 
-//ÊÂ¼ş»º´æ
-//ÓÃÀ´´úÌæjqueryµÄdata»º´æ
+//äº‹ä»¶ç¼“å­˜
+//ç”¨æ¥ä»£æ›¿jqueryçš„dataç¼“å­˜
 var eventCache = {};
 
 var $$ = ajQuery = function(selector) {
@@ -30,27 +30,27 @@ ajQuery.fn = ajQuery.prototype = {
 ajQuery.fn.init.prototype = ajQuery.fn
 
 ajQuery.event = {
-	//Ôö¼ÓÊÂ¼ş
+	//å¢åŠ äº‹ä»¶
 	add:function(elem, types, handler){
 		var eventHandle = function(e) {
 			return ajQuery.event.dispatch.apply(elem, arguments)
 		};
-		//°ÑÓÃ»§µÄ»Øµ÷£¬·Åµ½»º´æÖĞ
+		//æŠŠç”¨æˆ·çš„å›è°ƒï¼Œæ”¾åˆ°ç¼“å­˜ä¸­
 		eventCache['handler'] = handler
 		if (elem.addEventListener) {
 			elem.addEventListener(types, eventHandle, false);
 		}
 	},
 
-	//ÅÉ·¢ÊÂ¼ş
+	//æ´¾å‘äº‹ä»¶
 	dispatch:function(event){
-		//ĞŞÕıÊÂ¼ş¶ÔÏó
+		//ä¿®æ­£äº‹ä»¶å¯¹è±¡
 		event = ajQuery.event.fix(event);
 		//var handlerQueue = ajQuery.event.handlers.call(this, event, eventCache['handler']);
 		eventCache['handler'].call(this,event)
 	},
 
-	//Ö´ĞĞÊÂ¼ş¾ä±ú
+	//æ‰§è¡Œäº‹ä»¶å¥æŸ„
 	handlers: function(event, handlers) {
 		var handlerQueue = [];
 		handlerQueue.push({
@@ -58,17 +58,17 @@ ajQuery.event = {
 			handlers: handlers.slice(delegateCount)
 		});
 	},
-	//ĞŞÕıÊÂ¼ş¶ÔÏó
+	//ä¿®æ­£äº‹ä»¶å¯¹è±¡
 	fix:function(event){
-		//Ô­Ê¼ÊÂ¼şÒıÓÃ
+		//åŸå§‹äº‹ä»¶å¼•ç”¨
 		var originalEvent = event;
-		//Êó±êÊÂ¼ş¶ÔÏóµÄÊôĞÔ
+		//é¼ æ ‡äº‹ä»¶å¯¹è±¡çš„å±æ€§
 		var props= "altKey bubbles cancelable ctrlKey currentTarget eventPhase metaKey relatedTarget shiftKey target timeStamp view which button buttons clientX clientY offsetX offsetY pageX pageY screenX screenY toElement".split(" ");
 
-		//´´½¨ÊÂ¼ş¶ÔÏó
+		//åˆ›å»ºäº‹ä»¶å¯¹è±¡
 		var event = new ajQuery.Event(originalEvent);
 
-		//»ìÈëÊÂ¼şÊôĞÔ
+		//æ··å…¥äº‹ä»¶å±æ€§
 		i = props.length;
 		while (i--) {
 			prop = props[i];
@@ -86,8 +86,8 @@ function returnFalse() {
 	return false;
 }
 
-//Ä£Äâ³öÊÂ¼ş¶ÔÏó
-//Ôö¼Óµ÷ÓÃÅĞ¶Ï·½·¨
+//æ¨¡æ‹Ÿå‡ºäº‹ä»¶å¯¹è±¡
+//å¢åŠ è°ƒç”¨åˆ¤æ–­æ–¹æ³•
 ajQuery.Event = function(src, props) {
 	if (src && src.type) {
 		this.originalEvent = src;
@@ -134,7 +134,7 @@ ajQuery.Event.prototype = {
 
 
 ajQuery.fn.on = function(types, fn) {
-	//²ÎÊı¹ıÂË
+	//å‚æ•°è¿‡æ»¤
 	//...............
 	ajQuery.event.add(this[0], types, fn);
 }
